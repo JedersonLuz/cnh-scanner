@@ -29,18 +29,6 @@ def search_cpf(filename, is_testing=False):
     plt.show()
     print([img_text.strip()])
 
-  """ boxes = pytesseract.image_to_data(img_ubyte)
-  for a, b in enumerate(boxes.splitlines()):
-    #print(b)
-    if a!=0:
-      b = b.split()
-      if len(b) == 12:
-        x,y,w,h = int(b[6]),int(b[7]),int(b[8]),int(b[9])
-        #cv2.putText(img, b[11], (x,y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (50,50,255), 2)
-        cv2.rectangle(img, (x,y), (x+w, y+h), (50, 50, 255), 2) 
-
-  cv2.imwrite('boxes.png', img) """
-
   for row in img_text.split('\n'):
     row = row.replace(' ', '')
     row = row.replace('=', '')
