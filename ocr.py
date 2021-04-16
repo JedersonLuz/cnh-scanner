@@ -14,6 +14,18 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 pattern = r'\d{3}.\d{3}.\d{3}-\d{2}'
 
 def search_cpf(filename, is_testing=False):
+  '''
+  Receive a filename of a document and return the CPF extracted from it.
+
+  Parameters:
+    filename (string): Path of the document.
+    is_testing (bool): If True, present advanced depuration.
+
+  Returns:
+    String of the CPF extracted from document.
+  
+  '''
+  
   img = imread(filename).astype(np.uint8)
   img_gray = rgb2gray(img)
   img_powered = adjust_gamma(img_gray, 0.4, 10)
@@ -40,16 +52,3 @@ def search_cpf(filename, is_testing=False):
       return result[0]
   
   print('Search unsuccessful.')
-
-search_cpf('photos/cnh_aberta.jpg', is_testing=False)
-search_cpf('photos/cnh_aberta_ajustada.jpg', is_testing=False)
-search_cpf('photos/cnh_fechada.jpg', is_testing=False)
-search_cpf('photos/cnh_fechada_ajustada.jpg', is_testing=False)
-search_cpf('photos/cnh_fechada_ajustada_cortada.jpg', is_testing=False)
-search_cpf('photos/cnh.jpg', is_testing=False)
-search_cpf('photos/cnh2.jpg', is_testing=False)
-search_cpf('photos/cnh3.jpg', is_testing=False)
-search_cpf('photos/cnh4.jpg', is_testing=False)
-search_cpf('photos/cnh5.jpg', is_testing=False)
-search_cpf('photos/cnh.png', is_testing=False)
-search_cpf('photos/cnh2.png', is_testing=False)
